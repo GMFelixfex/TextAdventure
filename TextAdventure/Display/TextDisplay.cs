@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
-namespace TextAdventure
+namespace TextAdventure.Display
 {
     class TextDisplay
     {
         private static readonly TextDisplay instance = new TextDisplay();
         private string currentText = "";
-
+        
         private TextDisplay()
         {
-
+            displayText();
         }
 
         public static TextDisplay getInstance()
@@ -21,14 +21,17 @@ namespace TextAdventure
             return instance;
         }
 
-        public void setCurrentText(string text)
+        public void setCurrentText(string _text)
         {
-            currentText = text;
+            currentText = _text;
         }
 
         public void displayText()
         {
             Console.WriteLine(currentText);
+
         }
+
+
     }
 }
