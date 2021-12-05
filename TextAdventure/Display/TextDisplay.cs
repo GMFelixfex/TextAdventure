@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace TextAdventure.Display
 {
@@ -28,7 +29,10 @@ namespace TextAdventure.Display
 
         public void displayText()
         {
-            Console.WriteLine(currentText);
+
+            Console.SetCursorPosition(0, 0);
+            Console.Write(currentText);
+
 
         }
 
