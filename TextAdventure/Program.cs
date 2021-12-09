@@ -3,6 +3,7 @@ using System.Timers;
 using TextAdventure.Display;
 using TextAdventure.TextFormatting;
 using TextAdventure.Options;
+using TextAdventure.FileHandler;
 
 namespace TextAdventure
 {
@@ -10,16 +11,17 @@ namespace TextAdventure
     {
         static void Main(string[] args)
         {
+            /*
             Console.SetWindowSize(StartOptions.ScreenWidth, StartOptions.ScreenHeight);
             Console.ForegroundColor = ConsoleColor.White;
-
             Timer aTimer;
             aTimer = new Timer();
             aTimer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
             aTimer.Interval = 100;
             aTimer.Enabled = true;
             new System.Threading.AutoResetEvent(false).WaitOne();
-
+            */
+            Console.WriteLine(Handler.ReadFile("/save", "test.txt"));
         }
 
         private static void OnTimedEvent(object source, ElapsedEventArgs e)
