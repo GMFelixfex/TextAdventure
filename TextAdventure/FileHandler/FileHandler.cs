@@ -48,8 +48,15 @@ namespace TextAdventure.FileHandler
             return s;
         }
 
-        public static void ReadJSON (string relPath, string dataName) {
+        public static T ReadJSON<T> (string relPath, string dataName) {
+            string jsonString = ReadFile(relPath, dataName);
+            return JsonSerializer.Deserialize<T>(jsonString);
+        }
 
+        public static void WriteJSON<T> (string relPath, string dataName, T jsonObject) {
+            JsonSerializerOptions opt = new JsonSerializerOptions(){ WriteIndented=true };
+            string jsonString = JsonSerializer.Serialize<T>(jsonObject, opt);
+            OverwriteFile(relPath, dataName, jsonString);
         }
     }
 

@@ -21,7 +21,12 @@ namespace TextAdventure
             aTimer.Enabled = true;
             new System.Threading.AutoResetEvent(false).WaitOne();
             */
+            Map map1 = new Map(2,2);
+            Handler.WriteJSON<Map>("/save", "test.txt", map1);
             Console.WriteLine(Handler.ReadFile("/save", "test.txt"));
+            Map mapCopy = Handler.ReadJSON<Map>("/save", "test.txt");
+            Console.WriteLine(mapCopy.x);
+            Console.WriteLine(mapCopy.y);
         }
 
         private static void OnTimedEvent(object source, ElapsedEventArgs e)
