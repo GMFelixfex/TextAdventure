@@ -20,7 +20,8 @@ namespace TextAdventure.Core
         private static int currentInteractionSelected = 1;
         private static int TEMPMaxinteractions = 4;
         private static int[] playerPosition = new int[]{ 2, 0 };
-        private static readonly string[] testmap = new string[] { "HXXXXXXXXX", "XXXXVVVXXX", "XXXXXXXXXX", "XXXXXXXXXX", "XXXXXXCCXX", "XXXXXXXMMM", "XXXXXXXXMM", "XXXXXXMMMM" };
+        private static Maps.Map testmap = Maps.Map.getTestMap();
+        private static string[] testMapString = testmap.getMapSymbols();
 
         public static void GetCurrentScreen()
         {
@@ -32,8 +33,9 @@ namespace TextAdventure.Core
             } 
             else if (ScreenType == ScreenTypes.Ingame)
             {
-                TextFormatter.formatDescrption("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.At vero eos et accusam et justo duo dolores et ea rebum.Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.At vero eos et accusam et justo duo dolores et ea rebum.Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.At vero eos et accusam et justo duo dolores et ea rebum.Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.Lorem ipsum dolor sit amet,  FIN");
-                TextFormatter.formatMap(playerPosition,testmap);
+                //TextFormatter.formatDescrption("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.At vero eos et accusam et justo duo dolores et ea rebum.Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.At vero eos et accusam et justo duo dolores et ea rebum.Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.At vero eos et accusam et justo duo dolores et ea rebum.Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.Lorem ipsum dolor sit amet,  FIN");
+                TextFormatter.formatDescrption(testmap.tiles[playerPosition[0], playerPosition[1]].description);
+                TextFormatter.formatMap(playerPosition,testMapString);
                 TextFormatter.formatInteraction(new string[] { "North", "West", "South", "East", "Interact" }, currentInteractionSelected);
 
             }
@@ -145,7 +147,7 @@ namespace TextAdventure.Core
                 }
                 else if (keyinfo.Key == ConsoleKey.S)
                 {
-                    if(playerPosition[0] < testmap.Length-1)
+                    if(playerPosition[0] < testmap.tiles.GetLength(0)-1)
                     {
                         playerPosition[0]++;
                     }
@@ -166,7 +168,7 @@ namespace TextAdventure.Core
                 }
                 else if (keyinfo.Key == ConsoleKey.D)
                 {
-                    if (playerPosition[1] < testmap[0].Length-1)
+                    if (playerPosition[1] < testmap.tiles.GetLength(1)-1)
                     {
                         playerPosition[1]++;
                     }
