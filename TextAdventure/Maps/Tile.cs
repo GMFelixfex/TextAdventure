@@ -8,9 +8,9 @@ namespace TextAdventure.Maps
 {
     class Tile
     {
-        public string description;
-        public char mapsymbol;
-        public string interaction;
+        public string description { get; set; }
+        public char mapsymbol { get; set; }
+        public string interaction { get; set; }
 
         public Tile(string description, char mapsymbol, string interaction)
         {

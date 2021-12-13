@@ -8,13 +8,13 @@ namespace TextAdventure.Maps
 {
     class Map
     {
-        public string title;
-        public string advDescription;
-        public int[] size;
-        public int[] startPos;
-        public int playercount;
-        public int[] playerturns;
-        public Tile[,] tiles;
+        public string title { get; set; }
+        public string advDescription { get; set; }
+        public int[] size { get; set; }
+        public int[] startPos { get; set; }
+        public int playercount { get; set; }
+        public int[] playerturns { get; set; }
+        public Tile[,] tiles { get; set; }
 
         public Map(string title, string advDescription, int[] size, int[] startPos)
         {
