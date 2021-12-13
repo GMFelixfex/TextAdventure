@@ -66,5 +66,24 @@ namespace TextAdventure.Maps
             return returnString;
         }
 
+        public static Map getAFullMap()
+        {
+            Map testmap = new Map("Title","Adventure description", new int[] { 16, 16 }, new int[] { 3, 9 });
+
+            testmap.tiles[0, 0] = new Tile("description",'S',"Interaction");
+            testmap.tiles[0, 1] = new Tile("description", 'S', "Interaction");
+            testmap.tiles[0, 2] = new Tile("description", 'S', "Interaction");
+            testmap.tiles[0, 3] = new Tile("description", 'S', "Interaction");
+
+
+
+
+
+
+            testmap.playercount = 0;
+            testmap.playerturns = new int[] { 53, 44, 123, 456, 331, 69, 420 };
+            return testmap;
+        }
+
     }
 }
