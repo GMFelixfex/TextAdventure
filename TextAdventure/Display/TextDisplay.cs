@@ -10,7 +10,7 @@ namespace TextAdventure.Display
     class TextDisplay
     {
         private static readonly TextDisplay instance = new TextDisplay();
-        private string currentText = "";
+        private string currentScreen = "";
         
         private TextDisplay()
         {
@@ -22,18 +22,15 @@ namespace TextAdventure.Display
             return instance;
         }
 
-        public void setCurrentText(string _text)
+        public void setCurrentScreen(string _text)
         {
-            currentText = _text;
+            currentScreen = _text;
         }
 
         public void displayText()
         {
-
             Console.SetCursorPosition(0, 0);
-            Console.Write(currentText);
-
-
+            Console.Write(currentScreen);
         }
 
 

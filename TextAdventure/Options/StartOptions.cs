@@ -8,9 +8,9 @@ namespace TextAdventure.Options
 {
     class StartOptions
     {
-        public static int ScreenHeight = 50;
+        public static int ScreenHeight = 41;
         public static int ScreenWidth = 150;
-        public static int DisplayHeight = ScreenHeight-2;
+        public static int DisplayHeight = ScreenHeight-3;
         public static int DisplayWidth = ScreenWidth-2;
         public static int MapDisplayWidth = 87;
         public static int DescDisplayHeight = 27;

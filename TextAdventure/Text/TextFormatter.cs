@@ -78,15 +78,23 @@ namespace TextAdventure.TextFormatting
             }
             return currentInteraction;
         }
-        public static string[] formatMap(string[] _mapSymbols)
+        public static string[] formatMap(int[] _playerPos, string[] _mapSymbols)
         {
+            string[] tempstring = (string[])_mapSymbols.Clone();
+
+            if (_playerPos[0] < tempstring.Length && _playerPos[1] < tempstring[0].Length)
+            {
+                tempstring[_playerPos[0]] = tempstring[_playerPos[0]].Remove(_playerPos[1], 1).Insert(_playerPos[1], "P");
+            }
+            
             currentMapSymbols[0] = new String(' ', StartOptions.MapDisplayWidth);
             for (int i = 1; i < StartOptions.DisplayHeight; i++)
             {
-                if (i-1<_mapSymbols.Length)
+                if (i - 1 < tempstring.Length)
                 {
-                    currentMapSymbols[i] = "  "+_mapSymbols[i-1] + new String(' ', StartOptions.MapDisplayWidth - (_mapSymbols[i-1].Length+2));
-                } else
+                    currentMapSymbols[i] = "  " + tempstring[i - 1] + new String(' ', StartOptions.MapDisplayWidth - (tempstring[i - 1].Length + 2));
+                }
+                else
                 {
                     currentMapSymbols[i] = new String(' ', StartOptions.MapDisplayWidth);
                 }
@@ -94,6 +102,7 @@ namespace TextAdventure.TextFormatting
             }
             return currentMapSymbols;
         }
+        
         public static string[] formatMenu(string[] _options, string title, int selected)
         {
             int gapToTop = 20;
@@ -199,7 +208,7 @@ namespace TextAdventure.TextFormatting
                         Screen += "║" + currentMapSymbols[i] + "╠" + new String('═', currentDescription[0].Length) + "╣" + "\n";
                     } else
                     {
-                        Screen += "║" + currentMapSymbols[i] + "║" + currentInteraction[i-(StartOptions.DisplayHeight-currentInteraction.Length)] + "║" + "\n";
+                        Screen += "║" + currentMapSymbols[i] + "║" + currentInteraction[i-(StartOptions.DisplayHeight-currentInteraction.Length+1)] + "║" + "\n";
                     }
 
 
@@ -222,4 +231,41 @@ namespace TextAdventure.TextFormatting
             return Screen;
         }
     }
+    /*
+        public static string[] formatMap(int[] _playerPos, char[][] _mapChars)
+        {
+            currentMapSymbols[0] = new String(' ', StartOptions.MapDisplayWidth);
+
+            for (int i = 1; i < StartOptions.DisplayHeight; i++)
+            {
+                currentMapSymbols[i] += "  ";
+                for (int j = 0; j < StartOptions.MapDisplayWidth-2; j++)
+                {
+                    
+                    if(i == _playerPos[0]+1 && j == _playerPos[1])
+                    {
+                        currentMapSymbols[i] += "P";
+                    }
+                    else if (i < _mapChars.Length)
+                    {
+                        if (j >= _mapChars[i].Length)
+                        {
+                            currentMapSymbols[i] += " ";
+                        }
+                        else
+                        {
+                            currentMapSymbols[i] += _mapChars[i-1][j];
+                        }
+                    }
+                    else
+                    {
+                        currentMapSymbols[i] += " ";
+                    }
+
+                }
+
+
+            }
+            return currentMapSymbols;
+        }*/
 }
